@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Jai Bhawani Group</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ page_bg_css_url }}">
+    <style>
+        body {
+            color: #2d241d;
+            background: linear-gradient(135deg, #fcf7ef 0%, #f4d19b 100%) !important;
+        }
+        body::before {
+            display: none !important;
+        }
+        .admin-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px 16px 40px;
+        }
+        .topbar {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 12px 30px rgba(44, 24, 12, 0.14);
+        }
+        .admin-title {
+            font-weight: 800;
+            color: #2d241d;
+            margin: 0;
+        }
+        .admin-subtitle {
+            color: #806d5d;
+            margin: 4px 0 0;
+            font-size: 0.95rem;
+        }
+        .metric-card,
+        .panel {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(44, 24, 12, 0.12);
+        }
+        .metric-card {
+            padding: 20px;
+            height: 100%;
+        }
+        .metric-label {
+            color: #806d5d;
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .metric-value {
+            color: #ff6600;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-top: 10px;
+        }
+        .panel {
+            overflow: hidden;
+        }
+        .panel-header {
+            padding: 20px 22px;
+            border-bottom: 1px solid #f1dfd0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .panel-header h2 {
+            color: #2d241d;
+            font-size: 1.18rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .admin-table {
+            margin: 0;
+            vertical-align: middle;
+        }
+        .admin-table thead th {
+            background: #fff4ea;
+            color: #6c4a32;
+            border-bottom: 1px solid #efd7c3;
+            font-size: 0.78rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .admin-table tbody td {
+            border-color: #f2e3d6;
+            padding: 14px 12px;
+        }
+        .order-name {
+            font-weight: 800;
+            color: #2d241d;
+        }
+        .muted-small {
+            color: #8a7666;
+            font-size: 0.86rem;
+        }
+        .soft-badge {
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 26px;
+            padding: 4px 10px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        .badge-category { background: #fff0df; color: #b65300; }
+        .badge-payment { background: #eaf7ef; color: #227242; }
+        .badge-pending { background: #fff5cc; color: #856500; }
+        .badge-accepted { background: #e8f1ff; color: #245ea8; }
+        .badge-delivered { background: #eaf7ef; color: #227242; }
+        .badge-cancelled { background: #ffe9e9; color: #b42323; }
+        .action-form {
+            display: inline-flex;
+            margin: 2px;
+        }
+        .action-form .btn {
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
+        .empty-state {
+            padding: 42px 20px;
+            color: #806d5d;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .topbar,
+            .panel-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .admin-title {
+                font-size: 1.35rem;
+            }
+            .metric-value {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <main class="admin-shell">
+        <div class="topbar d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="admin-title">Admin Dashboard</h1>
+                <p class="admin-subtitle">Manage customers and recent sweet orders.</p>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                <a href="{{ url_for('home') }}" class="btn btn-outline-secondary btn-sm">Home</a>
+                <a href="{{ url_for('logout') }}" class="btn btn-primary btn-sm">Logout</a>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="metric-card">
+                    <div class="metric-label">Admin</div>
+                    <div class="mt-2 fw-bold">{{ admin_user.fullname }}</div>
+                    <div class="muted-small">@{{ admin_user.username }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-card">
+                    <div class="metric-label">Registered Users</div>
+                    <div class="metric-value">{{ user_count }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-card">
+                    <div class="metric-label">Total Orders</div>
+                    <div class="metric-value">{{ order_count }}</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Recent Orders</h2>
+                    <div class="muted-small">Latest 20 customer orders</div>
+                </div>
+                <span class="soft-badge badge-category">{{ orders|length }} showing</span>
+            </div>
+            {% if orders %}
+            <div class="table-responsive">
+                <table class="table admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Address</th>
+                            <th>Category</th>
+                            <th>Qty</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td class="fw-bold">#{{ order.id }}</td>
+                            <td>
+                                <div class="fw-bold">{{ order.user.username }}</div>
+                                <div class="muted-small">{{ order.user.fullname }}</div>
+                            </td>
+                            <td>
+                                <div class="order-name">{{ order.product_name }}</div>
+                                <div class="muted-small">{{ order.created_at.strftime('%d %b %Y') if order.created_at else '' }}</div>
+                            </td>
+                            <td>
+                                {% if order.address_line %}
+                                <div class="fw-bold">{{ order.delivery_name }}</div>
+                                <div class="muted-small">{{ order.delivery_phone }}</div>
+                                <div class="muted-small">{{ order.address_line }}, {{ order.city }}, {{ order.state }} {{ order.pincode }}</div>
+                                {% else %}
+                                <span class="muted-small">No address saved</span>
+                                {% endif %}
+                            </td>
+                            <td><span class="soft-badge badge-category">{{ order.category|capitalize }}</span></td>
+                            <td class="fw-bold">{{ order.quantity }}</td>
+                            <td>
+                                <span class="soft-badge badge-payment">{{ order.payment_method|upper }}</span>
+                                <div class="muted-small mt-1">{{ order.payment_status|capitalize }}</div>
+                            </td>
+                            <td>
+                                <span class="soft-badge badge-{{ order.status }}">{{ order.status|capitalize }}</span>
+                            </td>
+                            <td>
+                                {% if order.status == 'pending' %}
+                                <form method="POST" action="{{ url_for('update_order_status', order_id=order.id) }}" class="action-form">
+                                    <input type="hidden" name="status" value="accepted">
+                                    <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                                </form>
+                                {% endif %}
+                                {% if order.status in ['pending', 'accepted'] %}
+                                <form method="POST" action="{{ url_for('update_order_status', order_id=order.id) }}" class="action-form">
+                                    <input type="hidden" name="status" value="delivered">
+                                    <button type="submit" class="btn btn-primary btn-sm">Delivered</button>
+                                </form>
+                                <form method="POST" action="{{ url_for('update_order_status', order_id=order.id) }}" class="action-form">
+                                    <input type="hidden" name="status" value="cancelled">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Cancel</button>
+                                </form>
+                                {% else %}
+                                <span class="muted-small">Done</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state">No orders yet.</div>
+            {% endif %}
+        </section>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jai Bhawani Group - Sign Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fcf9f2; /* Light cream background */
+        font-family: 'Inter', sans-serif;
+        padding: 20px;
+    }
+
+    .main-container {
+        display: flex;
+        background: #ffffff;
+        border-radius: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        max-width: 1100px;
+        width: 100%;
+        min-height: 700px;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .left-panel {
+        flex: 1;
+        padding: 40px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .logo-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .header-text {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header-text h2 {
+        font-size: 32px;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .header-text p {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 18px;
+    }
+
+    .form-group {
+        flex: 1;
+        margin-bottom: 18px;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 0;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        font-size: 14px;
+        color: #333;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #7c101c;
+    }
+
+    .btn-submit {
+        width: 100%;
+        padding: 16px;
+        background-color: #7c101c;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+        background-color: #5a0b14;
+    }
+
+    .register-link {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        margin-top: 25px;
+    }
+
+    .register-link a {
+        color: #7c101c;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .right-panel {
+        flex: 1;
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        background: #fdf8ec;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .side-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .image-overlay-text {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background: linear-gradient(to bottom, rgba(253, 248, 236, 0.9) 0%, rgba(253, 248, 236, 0.4) 50%, transparent 100%);
+    }
+
+    .image-overlay-text h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        color: #7c101c;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .image-overlay-text h4 {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        color: #7c101c;
+        font-weight: 600;
+        letter-spacing: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .image-overlay-text h4::before,
+    .image-overlay-text h4::after {
+        content: "";
+        height: 1px;
+        width: 40px;
+        background-color: #7c101c;
+    }
+
+    .image-overlay-text p {
+        margin-top: 15px;
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        color: #5a0b14;
+        font-style: italic;
+    }
+
+    .back-home {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: white;
+        padding: 22px 35px;
+        border-top-left-radius: 30px;
+        color: #1a1a1a;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 2;
+    }
+
+    .flash-messages {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .flash-message {
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .flash-danger {
+        background-color: #ffeaea;
+        color: #d93025;
+    }
+    .flash-success {
+        background-color: #e6f4ea;
+        color: #137333;
+    }
+
+    @media (max-width: 900px) {
+        .main-container {
+            flex-direction: column;
+            min-height: auto;
+            max-width: 500px;
+            padding: 15px;
+        }
+        .right-panel {
+            display: none;
+        }
+        .left-panel {
+            padding: 30px 20px;
+        }
+        .form-row {
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 0;
+        }
+        .form-row .form-group {
+            margin-bottom: 18px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="main-container">
+    <!-- LEFT PANEL: FORM -->
+    <div class="left-panel">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JBG_logo.png') }}" alt="Jai Bhawani Group Logo" class="logo">
+        </div>
+
+        <div class="header-text">
+            <h2>Create an Account</h2>
+            <p>Join us to order your favorite sweets</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-messages" id="flash-container">
+                {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }} flash-msg" style="transition: opacity 0.5s;">{{ message }}</div>
+                {% endfor %}
+            </div>
+            <script>
+                setTimeout(() => {
+                    const flashContainer = document.getElementById('flash-container');
+                    if (flashContainer) {
+                        const messages = flashContainer.querySelectorAll('.flash-msg');
+                        messages.forEach(msg => msg.style.opacity = '0');
+                        setTimeout(() => flashContainer.remove(), 500);
+                    }
+                }, 3000);
+            </script>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('signup') }}">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="fullname" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="johndoe123" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" name="mobile" class="form-control" placeholder="1234567890" pattern="[0-9]{10}" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm-password" class="form-control" placeholder="Confirm password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Sign Up</button>
+        </form>
+
+        <div class="register-link">
+            Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+        </div>
+    </div>
+    
+    <!-- RIGHT PANEL: IMAGE AND BRANDING -->
+    <div class="right-panel">
+        <img src="{{ url_for('static', filename='images/losin_page_image.png') }}" alt="Signup Image" class="side-image">
+        
+        <a href="{{ url_for('home') }}" class="back-home">
+            Back to Home &rarr;
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

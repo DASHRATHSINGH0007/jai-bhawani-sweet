@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top glass-nav">
+    <div class="container">
+        <button class="btn btn-sm me-3" onclick="window.history.back()" style="border: 1px solid rgba(255,255,255,0.6); color: white; border-radius: 50%; width: 32px; height: 32px; padding: 0; display: flex; align-items: center; justify-content: center; font-weight: bold;" title="Go Back">
+            &larr;
+        </button>
+        <a class="navbar-brand" href="{{ url_for('home') }}">Jay Bhawani Group</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}#products">Products</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas" id="cart-nav-link" onclick="updateCartOffcanvas()">
+                        Cart
+                        <span class="badge bg-primary rounded-pill" id="cart-badge-count" style="display: {% if session.get('cart') %}inline-block{% else %}none{% endif %};">
+                            {{ session.get('cart', [])|length }}
+                        </span>
+                    </a>
+                </li>
+                {% if current_user %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ current_user.fullname }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                        <li><a class="dropdown-item" href="{{ url_for('profile') }}">My Profile & Orders</a></li>
+                        {% if current_user.is_admin %}
+                        <li><a class="dropdown-item" href="{{ url_for('admin') }}">Admin</a></li>
+                        {% endif %}
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Cart Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" id="cartOffcanvasBody">
+    <div class="text-center mt-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+  <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="cartToastMessage">
+        Item added to cart!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+<style>
+.glass-nav {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(255, 102, 0, 0.75) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+#cart-badge-count {
+    transition: transform 0.2s ease;
+}
+#cart-badge-count.pop {
+    transform: scale(1.4);
+}
+</style>
+
+<script>
+    function updateCartOffcanvas() {
+        fetch("/api/cart")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('cartOffcanvasBody').innerHTML = html;
+            })
+            .catch(err => console.error("Error fetching cart:", err));
+    }
+</script>

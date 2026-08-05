@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Jai Bhawani Group</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ page_bg_css_url }}">
+    <style>
+        .custom-navbar { background-color: rgba(255, 102, 0, 0.92); }
+        .custom-navbar .navbar-brand, .custom-navbar .nav-link { color: white !important; }
+        .account-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-bottom: 24px;
+        }
+        .account-card h4 { color: #ff6600; font-weight: 700; }
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6600, #ffc107);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+        .order-item {
+            border-left: 4px solid #ff6600;
+            background: #fff8f3;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+        }
+        .status-badge {
+            border-radius: 999px;
+            font-weight: 700;
+            padding: 6px 10px;
+            text-transform: capitalize;
+        }
+        .status-pending { background: #ffc107; color: #2d241d; }
+        .status-accepted { background: #0d6efd; color: white; }
+        .status-delivered { background: #198754; color: white; }
+        .status-cancelled { background: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    {% include '_site_nav.html' %}
+
+    <div class="container py-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ 'danger' if category == 'danger' else ('warning' if category == 'warning' else ('success' if category == 'success' else 'info')) }} alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="account-card">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="avatar">{{ user.fullname[0]|upper }}</div>
+                <div>
+                    <h4 class="mb-1">{{ user.fullname }}</h4>
+                    <p class="text-muted mb-0">@{{ user.username }}</p>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4"><small class="text-muted">Email</small><div>{{ user.email }}</div></div>
+                <div class="col-md-4"><small class="text-muted">Mobile</small><div>{{ user.mobile }}</div></div>
+                <div class="col-md-4"><small class="text-muted">Account</small><div>{% if user.is_admin %}Admin{% else %}Customer{% endif %}</div></div>
+            </div>
+        </div>
+
+        <div class="account-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">My Orders</h4>
+                <a href="{{ url_for('home') }}#products" class="btn btn-sm btn-primary">Order More</a>
+            </div>
+            {% if orders %}
+            {% for order in orders %}
+            <div class="order-item d-flex justify-content-between flex-wrap gap-2">
+                <div>
+                    <strong>{{ order.product_name }}</strong>
+                    <span class="text-muted"> - {{ order.category|capitalize }}</span>
+                    <div class="small text-muted">
+                        Qty: {{ order.quantity }} -
+                        Payment: {{ order.payment_method|upper }} ({{ order.payment_status|capitalize }}) -
+                        {{ order.created_at.strftime('%d %b %Y') if order.created_at else '' }}
+                    </div>
+                    <div class="small text-muted mt-1">
+                        Address: {{ order.delivery_name }}{% if order.delivery_phone %}, {{ order.delivery_phone }}{% endif %}
+                        {% if order.address_line %} - {{ order.address_line }}, {{ order.city }}, {{ order.state }} {{ order.pincode }}{% endif %}
+                    </div>
+                </div>
+                <div class="d-flex gap-2 align-items-start">
+                    <span class="status-badge status-{{ order.status }}">{{ order.status }}</span>
+                    {% if order.status in ['pending', 'accepted'] %}
+                    <form method="POST" action="{{ url_for('delete_order', order_id=order.id) }}" class="m-0">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="text-muted mb-0">You have not placed any orders yet.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">&copy; 2025 Jai Bhawani Group. All Rights Reserved.</p>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

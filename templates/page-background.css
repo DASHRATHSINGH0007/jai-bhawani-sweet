@@ -1,0 +1,34 @@
+/* Server-generated CSS — image path from Flask (url_for) */
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: url("{{ url_for('static', filename='images/background.jpg') }}")
+                no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-wrap {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.content-panel {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
