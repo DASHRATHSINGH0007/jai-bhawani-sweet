@@ -57,7 +57,7 @@
 </div>
 
 <!-- Toast Container -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100; margin-bottom: 70px;">
   <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body" id="cartToastMessage">
@@ -67,6 +67,14 @@
     </div>
   </div>
 </div>
+
+<!-- Floating Cart Icon -->
+<a href="#" class="floating-cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" onclick="updateCartOffcanvas()" style="display: {% if session.get('cart') %}flex{% else %}none{% endif %};">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <span class="floating-cart-badge" id="floating-cart-badge-count">{{ session.get('cart', [])|length }}</span>
+</a>
 
 <style>
 .glass-nav {
@@ -80,6 +88,46 @@
 }
 #cart-badge-count.pop {
     transform: scale(1.4);
+}
+.floating-cart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff6600;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1050;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+.floating-cart-btn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+.floating-cart-btn.pop {
+    transform: scale(1.2);
+}
+.floating-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 </style>
 

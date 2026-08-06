@@ -264,15 +264,20 @@
                             updateCartOffcanvas();
                         }
                         
-                        // Automatically open the cart offcanvas
-                        const cartOffcanvasEl = document.getElementById('cartOffcanvas');
-                        if (cartOffcanvasEl) {
-                            let cartOffcanvas = bootstrap.Offcanvas.getInstance(cartOffcanvasEl);
-                            if (!cartOffcanvas) {
-                                cartOffcanvas = new bootstrap.Offcanvas(cartOffcanvasEl);
-                            }
-                            cartOffcanvas.show();
+                        // Update floating cart icon
+                        const floatingBtn = document.querySelector('.floating-cart-btn');
+                        const floatingBadge = document.getElementById('floating-cart-badge-count');
+                        if (floatingBtn && floatingBadge) {
+                            floatingBadge.innerText = data.cart_count;
+                            floatingBtn.style.display = 'flex';
+                            floatingBtn.classList.add('pop');
+                            setTimeout(() => floatingBtn.classList.remove('pop'), 300);
                         }
+                        
+                        // Also show toast
+                        document.getElementById('cartToastMessage').innerText = data.message;
+                        const toast = new bootstrap.Toast(document.getElementById('cartToast'));
+                        toast.show();
                     }
                 } else if (data) {
                     alert(data.message || "An error occurred.");
