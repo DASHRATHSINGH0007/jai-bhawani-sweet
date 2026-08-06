@@ -50,13 +50,14 @@
             scrollbar-width: none;
         }
         
-        .hero-image-swap {
-            animation: hero-crossfade 7s infinite ease-in-out;
-        }
-        @keyframes hero-crossfade {
-            0%, 45% { opacity: 0; }
-            50%, 95% { opacity: 1; }
-            100% { opacity: 0; }
+        .hero-img-1 { animation: fade3 12s infinite 0s; }
+        .hero-img-2 { animation: fade3 12s infinite -8s; }
+        .hero-img-3 { animation: fade3 12s infinite -4s; }
+
+        @keyframes fade3 {
+            0%, 25% { opacity: 1; }
+            33.33%, 91.66% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -189,9 +190,10 @@
             <!-- Right Image Area -->
             <div class="relative h-[300px] md:h-[450px] w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
                 <!-- Main Image -->
-                <div class="w-full max-w-[400px] lg:max-w-[500px] aspect-square relative lg:absolute lg:right-[-50px] drop-shadow-2xl z-10 rounded-3xl border-8 border-white/50 overflow-hidden">
-                    <img src="{{ url_for('static', filename='images/home_main_01.png') }}" alt="Traditional Sweets" class="w-full h-full object-cover absolute inset-0">
-                    <img src="{{ url_for('static', filename='images/home_delight.png') }}" alt="Delight Sweets" class="w-full h-full object-cover absolute inset-0 hero-image-swap">
+                <div class="w-full max-w-[400px] lg:max-w-[500px] aspect-square relative lg:absolute lg:right-[-50px] drop-shadow-2xl z-10 rounded-3xl border-8 border-white/50 overflow-hidden bg-[#f7f3ec]">
+                    <img src="{{ url_for('static', filename='images/home_main_01.png') }}" alt="Traditional Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-1">
+                    <img src="{{ url_for('static', filename='images/home_delight.png') }}" alt="Delight Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-2">
+                    <img src="{{ url_for('static', filename='images/bite_main.png') }}" alt="Bite Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-3">
                 </div>
                 
                 <!-- Diya/Candle decorative -->
