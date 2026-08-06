@@ -40,4 +40,7 @@ PRODUCTS = {
         {"name": "Strawberry Delight", "image": "strawberry_delight.png", "desc": "Sweet strawberry delight, bursting with berry flavor.", "price": "₹1200/kg"},
         {"name": "Kachaa Aam Delight", "image": "kachaaam_delight.png", "desc": "Tangy raw mango delight with a sweet and sour kick.", "price": "₹1200/kg"},
     ],
+    "mix": [
+        {"name": "Assorted Diwali Box", "image": "assorted_box.jpg", "desc": "A premium selection of our best sweets.", "price": "₹1200/box"},
+    ]
 }

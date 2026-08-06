@@ -17,9 +17,10 @@ def seed_database():
             db.session.add(admin)
             db.session.commit()
 
-    if Product.query.count() == 0:
-        for category, items in PRODUCTS.items():
-            for item in items:
+    for category, items in PRODUCTS.items():
+        for item in items:
+            existing = Product.query.filter_by(name=item["name"]).first()
+            if not existing:
                 db.session.add(
                     Product(
                         category=category,
@@ -29,4 +30,4 @@ def seed_database():
                         price=item["price"],
                     )
                 )
-        db.session.commit()
+    db.session.commit()
