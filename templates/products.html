@@ -227,6 +227,7 @@
             fetch(this.action, {
                 method: 'POST',
                 body: formData,
+                credentials: 'same-origin',
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest'
                 }

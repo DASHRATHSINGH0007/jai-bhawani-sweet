@@ -133,7 +133,10 @@
 
 <script>
     function updateCartOffcanvas() {
-        fetch("/api/cart?t=" + new Date().getTime(), { cache: 'no-store' })
+        fetch("/api/cart?t=" + new Date().getTime(), { 
+            cache: 'no-store',
+            credentials: 'same-origin'
+        })
             .then(res => res.text())
             .then(html => {
                 document.getElementById('cartOffcanvasBody').innerHTML = html;
