@@ -49,6 +49,15 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
+        .hero-image-swap {
+            animation: hero-crossfade 7s infinite ease-in-out;
+        }
+        @keyframes hero-crossfade {
+            0%, 45% { opacity: 0; }
+            50%, 95% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="bg-bgcream text-textdark font-sans antialiased overflow-x-hidden selection:bg-primary selection:text-white">
@@ -180,7 +189,10 @@
             <!-- Right Image Area -->
             <div class="relative h-[300px] md:h-[450px] w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
                 <!-- Main Image -->
-                <img src="{{ url_for('static', filename='images/home_main_01.png') }}" alt="Traditional Sweets Assortment" class="w-full max-w-[400px] lg:max-w-[500px] aspect-square object-cover relative lg:absolute lg:right-[-50px] drop-shadow-2xl z-10 rounded-3xl border-8 border-white/50">
+                <div class="w-full max-w-[400px] lg:max-w-[500px] aspect-square relative lg:absolute lg:right-[-50px] drop-shadow-2xl z-10 rounded-3xl border-8 border-white/50 overflow-hidden">
+                    <img src="{{ url_for('static', filename='images/home_main_01.png') }}" alt="Traditional Sweets" class="w-full h-full object-cover absolute inset-0">
+                    <img src="{{ url_for('static', filename='images/home_delight.png') }}" alt="Delight Sweets" class="w-full h-full object-cover absolute inset-0 hero-image-swap">
+                </div>
                 
                 <!-- Diya/Candle decorative -->
                 <img src="https://images.unsplash.com/photo-1542691457-cbe4df041ef2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="absolute left-[-20px] top-[20%] w-24 h-24 object-cover rounded-full mix-blend-multiply opacity-80" alt="Diya">
