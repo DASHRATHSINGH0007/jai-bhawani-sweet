@@ -135,7 +135,7 @@
     function updateCartOffcanvas() {
         fetch("/api/cart?t=" + new Date().getTime(), { 
             cache: 'no-store',
-            credentials: 'same-origin'
+            credentials: 'include'
         })
             .then(res => res.text())
             .then(html => {
