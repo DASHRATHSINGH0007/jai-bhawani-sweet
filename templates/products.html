@@ -47,6 +47,13 @@
             object-fit: cover;
             transition: transform 0.4s ease;
         }
+        @media (max-width: 576px) {
+            .card-img-top { height: 130px; }
+            .card-title { font-size: 0.85rem; }
+            .card-text { font-size: 0.75rem; }
+            .price-tag { font-size: 0.9rem; }
+            .btn-sm { font-size: 0.75rem; padding: 0.25rem 0.4rem; }
+        }
         .quick-view-btn {
             position: absolute;
             top: 50%;
@@ -126,14 +133,14 @@
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text flex-grow-1">{{ product.desc }}</p>
                         <div class="mt-auto">
-                            <span class="price-tag">{{ product.price }}</span>
+                            <span class="price-tag mb-2 d-block">{{ product.price }}</span>
                             <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form mt-2">
                                 <input type="hidden" name="product_name" value="{{ product.name }}">
                                 <input type="hidden" name="category" value="{{ category|lower }}">
-                                <div class="d-flex align-items-center order-controls flex-wrap">
+                                <div class="d-flex flex-column gap-2 order-controls">
                                     <input type="hidden" name="quantity" value="1">
-                                    <button type="submit" name="action" value="buy" class="btn btn-primary btn-sm flex-grow-1">Buy Now</button>
-                                    <button type="submit" name="action" value="cart" class="btn btn-outline-primary btn-sm flex-grow-1">Add to Cart</button>
+                                    <button type="submit" name="action" value="buy" class="btn btn-primary btn-sm w-100">Buy Now</button>
+                                    <button type="submit" name="action" value="cart" class="btn btn-outline-primary btn-sm w-100">Add to Cart</button>
                                 </div>
                             </form>
                         </div>
@@ -257,10 +264,15 @@
                             updateCartOffcanvas();
                         }
                         
-                        // Also show toast
-                        document.getElementById('cartToastMessage').innerText = data.message;
-                        const toast = new bootstrap.Toast(document.getElementById('cartToast'));
-                        toast.show();
+                        // Automatically open the cart offcanvas
+                        const cartOffcanvasEl = document.getElementById('cartOffcanvas');
+                        if (cartOffcanvasEl) {
+                            let cartOffcanvas = bootstrap.Offcanvas.getInstance(cartOffcanvasEl);
+                            if (!cartOffcanvas) {
+                                cartOffcanvas = new bootstrap.Offcanvas(cartOffcanvasEl);
+                            }
+                            cartOffcanvas.show();
+                        }
                     }
                 } else if (data) {
                     alert(data.message || "An error occurred.");
