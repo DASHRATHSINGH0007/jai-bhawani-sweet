@@ -382,7 +382,7 @@ def register_web_routes(app):
         except (TypeError, ValueError):
             quantity = 1
 
-        if product_name and category in ("bites", "crunch", "delight"):
+        if product_name and category in ("bites", "crunch", "delight", "mix"):
             if "cart" not in session:
                 session["cart"] = []
             
