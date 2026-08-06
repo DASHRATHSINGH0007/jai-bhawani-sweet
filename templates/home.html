@@ -81,12 +81,12 @@
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
             
             <!-- Logo Section -->
-            <a href="{{ url_for('home') }}" class="flex items-center gap-3 cursor-pointer decoration-transparent">
-                <img src="{{ url_for('static', filename='images/JBG_logo.png') }}" alt="JBG Logo" class="w-16 h-16 object-contain rounded-full shadow-sm border border-primary/20">
+            <a href="{{ url_for('home') }}" class="flex items-center gap-2 md:gap-3 cursor-pointer decoration-transparent">
+                <img src="{{ url_for('static', filename='images/JBG_logo.png') }}" alt="JBG Logo" class="w-12 h-12 md:w-16 md:h-16 object-contain rounded-full shadow-sm border border-primary/20">
                 <div class="flex flex-col text-left">
-                    <span class="font-serif font-semibold text-primary text-xl leading-none tracking-wide">JAI BHAWANI</span>
-                    <span class="font-serif text-primary text-[10px] tracking-[0.3em] uppercase mt-1 mb-1 relative after:content-[''] after:w-full after:h-[1px] after:bg-primary/20 after:absolute after:top-1/2 after:ml-2">GROUP</span>
-                    <span class="text-[9px] text-gray-500 italic font-serif">Tradition &bull; Quality &bull; Trust</span>
+                    <span class="font-serif font-semibold text-primary text-lg md:text-xl leading-none tracking-wide">JAI BHAWANI</span>
+                    <span class="font-serif text-primary text-[8px] md:text-[10px] tracking-[0.3em] uppercase mt-1 mb-1 relative after:content-[''] after:w-full after:h-[1px] after:bg-primary/20 after:absolute after:top-1/2 after:ml-2">GROUP</span>
+                    <span class="text-[7px] md:text-[9px] text-gray-500 italic font-serif">Tradition &bull; Quality &bull; Trust</span>
                 </div>
             </a>
 
@@ -145,10 +145,10 @@
             <i class="ph ph-caret-right text-lg"></i>
         </button>
 
-        <div class="max-w-[1400px] mx-auto px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
             <!-- Left Text Content -->
-            <div class="pr-10 pt-10">
-                <div class="flex items-center gap-3 text-[11px] font-bold tracking-widest text-gray-600 uppercase mb-4">
+            <div class="pr-0 lg:pr-10 pt-16 lg:pt-10 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="flex items-center justify-center lg:justify-start gap-3 text-[11px] font-bold tracking-widest text-gray-600 uppercase mb-4">
                     <span class="w-1.5 h-1.5 rotate-45 bg-secondary"></span>
                     PURE INGREDIENTS
                     <span class="text-secondary">•</span>
@@ -156,10 +156,10 @@
                     <span class="w-1.5 h-1.5 rotate-45 bg-secondary"></span>
                 </div>
                 
-                <h1 class="font-serif text-6xl text-primary font-bold leading-none mb-1">
+                <h1 class="font-serif text-5xl md:text-6xl text-primary font-bold leading-none mb-1">
                     Taste the Tradition
                 </h1>
-                <div class="font-cursive text-5xl text-secondary mb-6 pl-8">
+                <div class="font-cursive text-4xl md:text-5xl text-secondary mb-6 pl-0 lg:pl-8">
                     Made with Love
                 </div>
                 
@@ -167,20 +167,20 @@
                     Experience the authentic taste of India with our premium sweets made from the finest ingredients and traditional recipes.
                 </p>
                 
-                <div class="flex items-center gap-4">
-                    <a href="#products" class="px-8 py-3 bg-primary text-white rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-primarylight transition-colors decoration-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-primary text-white rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-primarylight transition-colors decoration-transparent">
                         Shop Now <i class="ph ph-arrow-right"></i>
                     </a>
-                    <a href="#products" class="px-8 py-3 bg-transparent text-primary border border-primary rounded-lg font-medium text-sm hover:bg-primary/5 transition-colors decoration-transparent">
+                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-transparent text-primary border border-primary rounded-lg font-medium text-sm hover:bg-primary/5 transition-colors decoration-transparent flex items-center">
                         Explore Categories
                     </a>
                 </div>
             </div>
 
             <!-- Right Image Area -->
-            <div class="relative h-[450px] w-full flex items-center justify-end">
+            <div class="relative h-[300px] md:h-[450px] w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
                 <!-- Main Image -->
-                <img src="{{ url_for('static', filename='images/traditional_sweets.jpg') }}" alt="Traditional Sweets Assortment" class="w-[120%] max-w-[700px] h-auto object-contain absolute right-[-100px] drop-shadow-2xl z-10 rounded-xl" style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);">
+                <img src="{{ url_for('static', filename='images/traditional_sweets.jpg') }}" alt="Traditional Sweets Assortment" class="w-full lg:w-[120%] max-w-[700px] h-auto object-contain relative lg:absolute lg:right-[-100px] drop-shadow-2xl z-10 rounded-xl" style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);">
                 
                 <!-- Diya/Candle decorative -->
                 <img src="https://images.unsplash.com/photo-1542691457-cbe4df041ef2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="absolute left-[-20px] top-[20%] w-24 h-24 object-cover rounded-full mix-blend-multiply opacity-80" alt="Diya">
