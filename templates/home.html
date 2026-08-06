@@ -128,7 +128,7 @@
                 <a href="{{ url_for('cart') }}" class="text-textdark hover:text-primary transition-colors relative text-decoration-none">
                     <i class="ph ph-shopping-cart text-[22px]"></i>
                     {% set cart_count = session.get('cart', [])|length %}
-                    <span class="absolute -top-1.5 -right-2 w-[18px] h-[18px] bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center"{% if cart_count == 0 %} style="display: none;"{% endif %}>{{ cart_count }}</span>
+                    <span id="cart-badge-count" class="absolute -top-1.5 -right-2 w-[18px] h-[18px] bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center"{% if cart_count == 0 %} style="display: none;"{% endif %}>{{ cart_count }}</span>
                 </a>
                 <button class="lg:hidden text-primary text-2xl"><i class="ph ph-list"></i></button>
             </div>
@@ -342,26 +342,26 @@
                 <i class="ph ph-caret-right"></i>
             </button>
 
-            <div id="slider" class="flex overflow-x-auto gap-4 pb-4 hide-scroll lg:px-4">
+            <div id="slider" class="grid grid-cols-2 sm:flex sm:overflow-x-auto gap-3 sm:gap-4 pb-4 hide-scroll lg:px-4">
                 
                 <!-- Product 1 -->
-                <div class="min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-48 bg-[#f7f3ec] overflow-hidden">
+                <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
+                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/almond_bite_new.png') }}" alt="Almond Bite" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="font-semibold text-textdark text-[15px] mb-1">Almond Bite</h3>
+                        <h3 class="font-semibold text-textdark text-[13px] sm:text-[15px] mb-1 leading-tight">Almond Bite</h3>
                         <div class="flex items-center text-secondary text-[10px] mb-2 gap-0.5">
                             <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
                         </div>
-                        <div class="text-[15px] font-bold text-textdark mt-auto mb-4">
+                        <div class="text-[13px] sm:text-[15px] font-bold text-textdark mt-auto mb-3">
                             ₹1100 <span class="text-xs text-gray-400 font-normal">/ kg</span>
                         </div>
-                        <form method="POST" action="{{ url_for('place_order') }}">
+                        <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form">
                             <input type="hidden" name="product_name" value="Almond Bite">
                             <input type="hidden" name="category" value="bites">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" name="action" value="cart" class="w-full py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" name="action" value="cart" class="w-full py-1.5 sm:py-2 border border-gray-200 rounded-md text-[11px] sm:text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-1 sm:gap-2">
                                 Add to Cart <i class="ph ph-shopping-cart text-lg"></i>
                             </button>
                         </form>
@@ -369,23 +369,23 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-48 bg-[#f7f3ec] overflow-hidden">
+                <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
+                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/rose_delight.jpg') }}" alt="Rose Delight" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="font-semibold text-textdark text-[15px] mb-1">Rose Delight</h3>
+                        <h3 class="font-semibold text-textdark text-[13px] sm:text-[15px] mb-1 leading-tight">Rose Delight</h3>
                         <div class="flex items-center text-secondary text-[10px] mb-2 gap-0.5">
                             <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
                         </div>
-                        <div class="text-[15px] font-bold text-textdark mt-auto mb-4">
+                        <div class="text-[13px] sm:text-[15px] font-bold text-textdark mt-auto mb-3">
                             ₹1100 <span class="text-xs text-gray-400 font-normal">/ kg</span>
                         </div>
-                        <form method="POST" action="{{ url_for('place_order') }}">
+                        <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form">
                             <input type="hidden" name="product_name" value="Rose Delight">
                             <input type="hidden" name="category" value="delight">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" name="action" value="cart" class="w-full py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" name="action" value="cart" class="w-full py-1.5 sm:py-2 border border-gray-200 rounded-md text-[11px] sm:text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-1 sm:gap-2">
                                 Add to Cart <i class="ph ph-shopping-cart text-lg"></i>
                             </button>
                         </form>
@@ -393,23 +393,23 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-48 bg-[#f7f3ec] overflow-hidden">
+                <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
+                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/nutty_crunch.jpg') }}" alt="Nutty Crunch" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="font-semibold text-textdark text-[15px] mb-1">Nutty Crunch</h3>
+                        <h3 class="font-semibold text-textdark text-[13px] sm:text-[15px] mb-1 leading-tight">Nutty Crunch</h3>
                         <div class="flex items-center text-secondary text-[10px] mb-2 gap-0.5">
                             <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
                         </div>
-                        <div class="text-[15px] font-bold text-textdark mt-auto mb-4">
+                        <div class="text-[13px] sm:text-[15px] font-bold text-textdark mt-auto mb-3">
                             ₹1100 <span class="text-xs text-gray-400 font-normal">/ kg</span>
                         </div>
-                        <form method="POST" action="{{ url_for('place_order') }}">
+                        <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form">
                             <input type="hidden" name="product_name" value="Nutty Crunch">
                             <input type="hidden" name="category" value="crunch">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" name="action" value="cart" class="w-full py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" name="action" value="cart" class="w-full py-1.5 sm:py-2 border border-gray-200 rounded-md text-[11px] sm:text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-1 sm:gap-2">
                                 Add to Cart <i class="ph ph-shopping-cart text-lg"></i>
                             </button>
                         </form>
@@ -417,23 +417,23 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-48 bg-[#f7f3ec] overflow-hidden">
+                <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
+                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/dry_fruite_bite.png') }}" alt="Dry Fruit Bite" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="font-semibold text-textdark text-[15px] mb-1">Dry Fruit Bite</h3>
+                        <h3 class="font-semibold text-textdark text-[13px] sm:text-[15px] mb-1 leading-tight">Dry Fruit Bite</h3>
                         <div class="flex items-center text-secondary text-[10px] mb-2 gap-0.5">
                             <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
                         </div>
-                        <div class="text-[15px] font-bold text-textdark mt-auto mb-4">
+                        <div class="text-[13px] sm:text-[15px] font-bold text-textdark mt-auto mb-3">
                             ₹1300 <span class="text-xs text-gray-400 font-normal">/ kg</span>
                         </div>
-                        <form method="POST" action="{{ url_for('place_order') }}">
+                        <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form">
                             <input type="hidden" name="product_name" value="Dry Fruit Bite">
                             <input type="hidden" name="category" value="bites">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" name="action" value="cart" class="w-full py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" name="action" value="cart" class="w-full py-1.5 sm:py-2 border border-gray-200 rounded-md text-[11px] sm:text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-1 sm:gap-2">
                                 Add to Cart <i class="ph ph-shopping-cart text-lg"></i>
                             </button>
                         </form>
@@ -441,23 +441,23 @@
                 </div>
 
                 <!-- Product 5 -->
-                <div class="min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-48 bg-[#f7f3ec] overflow-hidden">
+                <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
+                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/almond_delight.jpg') }}" alt="Almond Delight" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
-                        <h3 class="font-semibold text-textdark text-[15px] mb-1">Almond Delight</h3>
+                        <h3 class="font-semibold text-textdark text-[13px] sm:text-[15px] mb-1 leading-tight">Almond Delight</h3>
                         <div class="flex items-center text-secondary text-[10px] mb-2 gap-0.5">
                             <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
                         </div>
-                        <div class="text-[15px] font-bold text-textdark mt-auto mb-4">
+                        <div class="text-[13px] sm:text-[15px] font-bold text-textdark mt-auto mb-3">
                             ₹1200 <span class="text-xs text-gray-400 font-normal">/ kg</span>
                         </div>
-                        <form method="POST" action="{{ url_for('place_order') }}">
+                        <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form">
                             <input type="hidden" name="product_name" value="Almond Delight">
                             <input type="hidden" name="category" value="delight">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" name="action" value="cart" class="w-full py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-2">
+                            <button type="submit" name="action" value="cart" class="w-full py-1.5 sm:py-2 border border-gray-200 rounded-md text-[11px] sm:text-sm font-medium text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-colors flex items-center justify-center gap-1 sm:gap-2">
                                 Add to Cart <i class="ph ph-shopping-cart text-lg"></i>
                             </button>
                         </form>
@@ -467,5 +467,65 @@
         </div>
     </section>
 
+    <!-- Tailwind Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-[100] flex flex-col gap-2"></div>
+
+    <script>
+        document.querySelectorAll('.ajax-cart-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const submitter = e.submitter;
+                if (submitter && submitter.name) {
+                    formData.append(submitter.name, submitter.value);
+                }
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(res => {
+                    if (res.redirected) {
+                        window.location.href = res.url;
+                        return null;
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if (data && data.success) {
+                        // Update badge
+                        const badge = document.getElementById('cart-badge-count');
+                        if (badge) {
+                            badge.innerText = data.cart_count;
+                            badge.style.display = 'flex';
+                            badge.classList.add('scale-125');
+                            setTimeout(() => badge.classList.remove('scale-125'), 200);
+                        }
+                        
+                        // Show Tailwind Toast
+                        const container = document.getElementById('toast-container');
+                        if (container) {
+                            const toast = document.createElement('div');
+                            toast.className = "bg-[#4a1515] text-white px-4 py-3 rounded-lg shadow-lg text-sm transition-all duration-300 transform translate-y-0 opacity-100";
+                            toast.innerHTML = `<div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-lg text-[#D4AF37]"></i> ${data.message}</div>`;
+                            container.appendChild(toast);
+                            setTimeout(() => {
+                                toast.classList.replace('opacity-100', 'opacity-0');
+                                toast.classList.replace('translate-y-0', 'translate-y-2');
+                                setTimeout(() => toast.remove(), 300);
+                            }, 3000);
+                        }
+                    } else if (data) {
+                        alert(data.message || "An error occurred.");
+                    }
+                })
+                .catch(err => console.error("Error:", err));
+            });
+        });
+    </script>
 </body>
 </html>
+

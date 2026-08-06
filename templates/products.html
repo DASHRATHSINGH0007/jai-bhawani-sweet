@@ -103,7 +103,7 @@
         <h2 class="text-center mb-4">Our Special {{ category }}</h2>
         <div class="row content-panel">
             {% for product in products %}
-            <div class="col-md-3 col-sm-6 mb-4">
+            <div class="col-6 col-md-3 col-sm-6 mb-4 px-2">
                 <div class="card product-card h-100">
                     <div class="img-wrapper">
                         <img src="{{ url_for('static', filename='images/' + product.image) }}"
@@ -127,7 +127,7 @@
                         <p class="card-text flex-grow-1">{{ product.desc }}</p>
                         <div class="mt-auto">
                             <span class="price-tag">{{ product.price }}</span>
-                            <form method="POST" action="{{ url_for('place_order') }}" class="mt-2">
+                            <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form mt-2">
                                 <input type="hidden" name="product_name" value="{{ product.name }}">
                                 <input type="hidden" name="category" value="{{ category|lower }}">
                                 <div class="d-flex align-items-center order-controls flex-wrap">
@@ -168,7 +168,7 @@
                 <h4 id="qv-price" class="text-primary fw-bold mb-3"></h4>
                 <p id="qv-desc" class="mb-4 text-muted" style="line-height: 1.6;"></p>
                 
-                <form method="POST" action="{{ url_for('place_order') }}" class="mt-auto">
+                <form method="POST" action="{{ url_for('place_order') }}" class="ajax-cart-form mt-auto">
                     <input type="hidden" name="product_name" id="qv-product-name" value="">
                     <input type="hidden" name="category" id="qv-category" value="">
                     <input type="hidden" name="quantity" value="1">
