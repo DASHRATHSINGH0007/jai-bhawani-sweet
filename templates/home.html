@@ -491,7 +491,7 @@
                     formData.append(submitter.name, submitter.value);
                 }
                 
-                fetch(this.action, {
+                fetch(this.getAttribute('action'), {
                     method: 'POST',
                     body: formData,
                     credentials: 'include',
