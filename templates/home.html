@@ -146,39 +146,52 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative w-full min-h-[600px] md:min-h-[700px] bg-[#fcf8f2] overflow-hidden flex items-center">
-        <!-- Seamlessly blended background image -->
-        <div class="absolute inset-y-0 right-0 w-full lg:w-[65%] z-0 h-full" style="-webkit-mask-image: linear-gradient(to right, transparent, black 25%); mask-image: linear-gradient(to right, transparent, black 25%);">
+    <section class="relative w-full bg-[#fcf8f2] overflow-hidden flex flex-col lg:block">
+        <style>
+            .hero-img-mask {
+                -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%);
+                mask-image: linear-gradient(to bottom, transparent, black 20%);
+            }
+            @media (min-width: 1024px) {
+                .hero-img-mask {
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 25%);
+                    mask-image: linear-gradient(to right, transparent, black 25%);
+                }
+            }
+        </style>
+
+        <!-- Image (Mobile: normal block below text, Desktop: absolute right) -->
+        <div class="order-2 lg:order-none relative lg:absolute lg:inset-y-0 lg:right-0 w-full h-[400px] sm:h-[500px] lg:h-full lg:w-[65%] z-0 hero-img-mask mt-[-30px] lg:mt-0">
             <img src="{{ url_for('static', filename='images/traditional_sweets.jpg') }}" alt="Traditional Sweets" class="w-full h-full object-cover object-center">
         </div>
 
-        <div class="max-w-[1400px] mx-auto px-6 md:px-16 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2">
+        <div class="order-1 lg:order-none max-w-[1400px] mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 lg:min-h-[700px]">
             <!-- Left Text Content -->
-            <div class="pt-16 lg:pt-10 flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div class="flex items-center justify-center lg:justify-start gap-2 text-[10px] font-bold tracking-widest text-[#7a5c34] uppercase mb-4">
+            <div class="px-6 md:px-16 pt-12 pb-10 lg:py-16 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+                <div class="flex items-center justify-center lg:justify-start gap-2 text-[9px] sm:text-[10px] font-bold tracking-widest text-[#7a5c34] uppercase mb-4">
                     PURE INGREDIENTS
                     <span class="text-[#d1b17d] mx-1">✧</span>
                     TIMELESS RECIPES
                     <span class="text-[#d1b17d] mx-1">✧</span>
-                    A SWEETER TOMORROW
+                    <span class="whitespace-nowrap">A SWEETER TOMORROW</span>
                 </div>
                 
-                <h1 class="font-serif text-5xl md:text-[65px] text-[#4a1515] font-bold leading-[1.1] mb-6">
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-[65px] text-[#4a1515] font-bold leading-[1.1] mb-5 lg:mb-6">
                     Authentic Taste,<br>
                     <span class="font-normal text-[#967041]">Crafted with Tradition</span>
                 </h1>
                 
-                <div class="flex items-center gap-2 mb-6 w-full max-w-[440px] opacity-60">
+                <div class="flex items-center gap-2 mb-5 lg:mb-6 w-full max-w-[440px] opacity-60">
                     <span class="flex-grow h-[1px] bg-[#967041]"></span>
                     <span class="w-1.5 h-1.5 rotate-45 bg-[#967041]"></span>
                     <span class="flex-grow h-[1px] bg-[#967041]"></span>
                 </div>
                 
-                <p class="text-[#3e1b12] text-[15px] leading-relaxed max-w-[440px] mb-8 font-medium">
+                <p class="text-[#3e1b12] text-[14px] sm:text-[15px] leading-relaxed max-w-[440px] mb-8 font-medium">
                     Discover the rich heritage of Indian sweets, made with pure ingredients, time-honored recipes and a whole lot of love.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-10 lg:mb-12">
                     <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-[#4a1515] text-white rounded-md font-medium text-sm flex items-center gap-2 hover:bg-[#2a0c0c] transition-colors decoration-transparent shadow-lg">
                         Shop Now <i class="ph ph-arrow-right"></i>
                     </a>
@@ -188,36 +201,36 @@
                 </div>
 
                 <!-- Icons Row -->
-                <div class="grid grid-cols-4 gap-4 max-w-[400px] w-full">
+                <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-[400px] w-full">
                     <div class="flex flex-col items-center gap-2">
-                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
-                            <i class="ph ph-leaf text-xl"></i>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-[#fcf8f2]">
+                            <i class="ph ph-leaf text-lg sm:text-xl"></i>
                         </div>
-                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Pure<br>Ingredients</span>
+                        <span class="text-[8px] sm:text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Pure<br>Ingredients</span>
                     </div>
                     <div class="flex flex-col items-center gap-2">
-                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
-                            <i class="ph ph-chef-hat text-xl"></i>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-[#fcf8f2]">
+                            <i class="ph ph-chef-hat text-lg sm:text-xl"></i>
                         </div>
-                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Traditional<br>Recipes</span>
+                        <span class="text-[8px] sm:text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Traditional<br>Recipes</span>
                     </div>
                     <div class="flex flex-col items-center gap-2">
-                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
-                            <i class="ph ph-certificate text-xl"></i>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-[#fcf8f2]">
+                            <i class="ph ph-certificate text-lg sm:text-xl"></i>
                         </div>
-                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Premium<br>Quality</span>
+                        <span class="text-[8px] sm:text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Premium<br>Quality</span>
                     </div>
                     <div class="flex flex-col items-center gap-2">
-                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
-                            <i class="ph ph-heart text-xl"></i>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-[#fcf8f2]">
+                            <i class="ph ph-heart text-lg sm:text-xl"></i>
                         </div>
-                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Made<br>with Love</span>
+                        <span class="text-[8px] sm:text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Made<br>with Love</span>
                     </div>
                 </div>
 
-                <div class="mt-8 flex items-center gap-3 w-full max-w-[400px] justify-center lg:justify-start">
+                <div class="mt-8 flex items-center gap-2 sm:gap-3 w-full max-w-[400px] justify-center lg:justify-start">
                     <span class="flex-grow h-[1px] bg-[#d1b17d]"></span>
-                    <span class="text-[8px] font-bold tracking-[0.2em] uppercase text-[#7a5c34]">Sweetening lives for a brighter tomorrow</span>
+                    <span class="text-[7px] sm:text-[8px] font-bold tracking-[0.2em] uppercase text-[#7a5c34]">Sweetening lives for a brighter tomorrow</span>
                     <span class="flex-grow h-[1px] bg-[#d1b17d]"></span>
                 </div>
             </div>
@@ -230,7 +243,7 @@
         </div>
 
         <!-- Bottom Right Decorative Shape -->
-        <div class="absolute bottom-0 right-0 w-[350px] h-[120px] bg-[#3e1b12] rounded-tl-[120px] z-20 hidden md:flex flex-col items-center justify-center shadow-2xl pl-10 pt-4">
+        <div class="absolute bottom-0 right-0 w-[350px] h-[120px] bg-[#3e1b12] rounded-tl-[120px] z-20 hidden lg:flex flex-col items-center justify-center shadow-2xl pl-10 pt-4">
             <i class="ph-fill ph-flower-lotus text-3xl text-[#d1b17d] mb-1"></i>
             <div class="text-[10px] font-bold tracking-[0.25em] text-[#d1b17d] uppercase text-center leading-tight">Tradition<br>In Every Bite</div>
         </div>
