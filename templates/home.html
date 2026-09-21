@@ -23,7 +23,7 @@
                         primary: '#4a1515',
                         primarylight: '#621a1a',
                         secondary: '#D4AF37',
-                        bgcream: '#fdfbf7',
+                        bgcream: '#ffffff',
                         bgdarker: '#f7f3ec',
                         textdark: '#333333'
                     },
@@ -87,7 +87,7 @@
     {% endwith %}
 
     <!-- NAVBAR -->
-    <header class="w-full bg-[#fdfbf7] border-b border-gray-200 z-50 relative">
+    <header class="w-full bg-[#ffffff] border-b border-gray-200 z-50 relative">
         <div class="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
             
             <!-- Logo Section -->
@@ -106,7 +106,7 @@
                 <a href="{{ url_for('home') }}#products" class="text-textdark hover:text-primary transition-colors text-[15px] font-medium flex items-center gap-1">Categories <i class="ph ph-caret-down text-xs text-gray-400"></i></a>
                 <a href="#" class="text-textdark hover:text-primary transition-colors text-[15px] font-medium">About Us</a>
                 <a href="#" class="text-textdark hover:text-primary transition-colors text-[15px] font-medium">Gallery</a>
-                <a href="#" class="text-textdark hover:text-primary transition-colors text-[15px] font-medium">Contact</a>
+                <a href="#contact" class="text-textdark hover:text-primary transition-colors text-[15px] font-medium">Contact</a>
             </nav>
 
             <!-- Right Icons -->
@@ -146,69 +146,93 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative w-full min-h-[550px] bg-gradient-to-r from-[#fcf7ef] via-[#faebcd] to-[#f4d19b] overflow-hidden flex items-center">
-        <!-- Controls -->
-        <button class="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md text-gray-600 hover:text-primary z-20 transition-transform hover:scale-105">
-            <i class="ph ph-caret-left text-lg"></i>
-        </button>
-        <button class="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md text-gray-600 hover:text-primary z-20 transition-transform hover:scale-105">
-            <i class="ph ph-caret-right text-lg"></i>
-        </button>
+    <section class="relative w-full min-h-[600px] md:min-h-[700px] bg-[#fcf8f2] overflow-hidden flex items-center">
+        <!-- Seamlessly blended background image -->
+        <div class="absolute inset-y-0 right-0 w-full lg:w-[65%] z-0 h-full" style="-webkit-mask-image: linear-gradient(to right, transparent, black 25%); mask-image: linear-gradient(to right, transparent, black 25%);">
+            <img src="{{ url_for('static', filename='images/traditional_sweets.jpg') }}" alt="Traditional Sweets" class="w-full h-full object-cover object-center">
+        </div>
 
-        <div class="max-w-[1400px] mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 md:px-16 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2">
             <!-- Left Text Content -->
-            <div class="pr-0 lg:pr-10 pt-16 lg:pt-10 flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div class="flex items-center justify-center lg:justify-start gap-3 text-[11px] font-bold tracking-widest text-gray-600 uppercase mb-4">
-                    <span class="w-1.5 h-1.5 rotate-45 bg-secondary"></span>
+            <div class="pt-16 lg:pt-10 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="flex items-center justify-center lg:justify-start gap-2 text-[10px] font-bold tracking-widest text-[#7a5c34] uppercase mb-4">
                     PURE INGREDIENTS
-                    <span class="text-secondary">•</span>
-                    TRADITIONAL RECIPES
-                    <span class="w-1.5 h-1.5 rotate-45 bg-secondary"></span>
+                    <span class="text-[#d1b17d] mx-1">✧</span>
+                    TIMELESS RECIPES
+                    <span class="text-[#d1b17d] mx-1">✧</span>
+                    A SWEETER TOMORROW
                 </div>
                 
-                <h1 class="font-serif text-5xl md:text-6xl text-primary font-bold leading-none mb-1">
-                    Taste the Tradition
+                <h1 class="font-serif text-5xl md:text-[65px] text-[#4a1515] font-bold leading-[1.1] mb-6">
+                    Authentic Taste,<br>
+                    <span class="font-normal text-[#967041]">Crafted with Tradition</span>
                 </h1>
-                <div class="font-cursive text-4xl md:text-5xl text-secondary mb-6 pl-0 lg:pl-8">
-                    Made with Love
+                
+                <div class="flex items-center gap-2 mb-6 w-full max-w-[440px] opacity-60">
+                    <span class="flex-grow h-[1px] bg-[#967041]"></span>
+                    <span class="w-1.5 h-1.5 rotate-45 bg-[#967041]"></span>
+                    <span class="flex-grow h-[1px] bg-[#967041]"></span>
                 </div>
                 
-                <p class="text-gray-700 text-[15px] leading-relaxed max-w-[420px] mb-8 font-medium">
-                    Experience the authentic taste of India with our premium sweets made from the finest ingredients and traditional recipes.
+                <p class="text-[#3e1b12] text-[15px] leading-relaxed max-w-[440px] mb-8 font-medium">
+                    Discover the rich heritage of Indian sweets, made with pure ingredients, time-honored recipes and a whole lot of love.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-primary text-white rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-primarylight transition-colors decoration-transparent">
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
+                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-[#4a1515] text-white rounded-md font-medium text-sm flex items-center gap-2 hover:bg-[#2a0c0c] transition-colors decoration-transparent shadow-lg">
                         Shop Now <i class="ph ph-arrow-right"></i>
                     </a>
-                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-transparent text-primary border border-primary rounded-lg font-medium text-sm hover:bg-primary/5 transition-colors decoration-transparent flex items-center">
+                    <a href="#products" class="w-full sm:w-auto justify-center px-8 py-3 bg-transparent text-[#4a1515] border border-[#4a1515] rounded-md font-medium text-sm hover:bg-[#4a1515]/5 transition-colors decoration-transparent flex items-center">
                         Explore Categories
                     </a>
                 </div>
-            </div>
 
-            <!-- Right Image Area -->
-            <div class="relative h-[300px] md:h-[450px] w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
-                <!-- Main Image -->
-                <div class="w-full max-w-[400px] lg:max-w-[500px] aspect-square relative lg:absolute lg:right-[-50px] drop-shadow-2xl z-10 rounded-3xl border-8 border-white/50 overflow-hidden bg-[#f7f3ec]">
-                    <img src="{{ url_for('static', filename='images/home_main_01.png') }}" alt="Traditional Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-1">
-                    <img src="{{ url_for('static', filename='images/home_delight.png') }}" alt="Delight Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-2">
-                    <img src="{{ url_for('static', filename='images/bite_main.png') }}" alt="Bite Sweets" class="w-full h-full object-cover absolute inset-0 hero-img-3">
+                <!-- Icons Row -->
+                <div class="grid grid-cols-4 gap-4 max-w-[400px] w-full">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
+                            <i class="ph ph-leaf text-xl"></i>
+                        </div>
+                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Pure<br>Ingredients</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
+                            <i class="ph ph-chef-hat text-xl"></i>
+                        </div>
+                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Traditional<br>Recipes</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
+                            <i class="ph ph-certificate text-xl"></i>
+                        </div>
+                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Premium<br>Quality</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 rounded-full border border-[#967041] flex items-center justify-center text-[#7a5c34] bg-transparent">
+                            <i class="ph ph-heart text-xl"></i>
+                        </div>
+                        <span class="text-[9px] uppercase font-bold text-[#4a1515] leading-tight text-center">Made<br>with Love</span>
+                    </div>
                 </div>
-                
 
-                <div class="absolute bottom-10 left-10 w-6 h-6 bg-red-600 rounded-full blur-[2px] opacity-60 rotate-45" style="border-radius: 50% 0 50% 50%;"></div>
-                <div class="absolute bottom-20 left-32 w-5 h-5 bg-red-700 rounded-full blur-[1px] opacity-70 rotate-12" style="border-radius: 50% 0 50% 50%;"></div>
+                <div class="mt-8 flex items-center gap-3 w-full max-w-[400px] justify-center lg:justify-start">
+                    <span class="flex-grow h-[1px] bg-[#d1b17d]"></span>
+                    <span class="text-[8px] font-bold tracking-[0.2em] uppercase text-[#7a5c34]">Sweetening lives for a brighter tomorrow</span>
+                    <span class="flex-grow h-[1px] bg-[#d1b17d]"></span>
+                </div>
             </div>
         </div>
+        
+        <!-- Top Right Badge -->
+        <div class="absolute top-10 right-16 hidden lg:flex flex-col items-center justify-center w-[130px] h-[140px] bg-[#faebcd]/95 rounded-t-[65px] rounded-b-[30px] border-[3px] border-[#3e1b12] text-[#3e1b12] text-center p-3 z-20 shadow-xl">
+            <span class="text-[11px] font-bold tracking-wider uppercase mb-1 leading-tight">More<br>Than Sweets</span>
+            <span class="text-[9px] font-medium tracking-wide uppercase border-t border-[#3e1b12] pt-1 mt-1 leading-tight">A Story of<br>Tradition</span>
+        </div>
 
-        <!-- Pagination Dots -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-            <div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 cursor-pointer hover:opacity-100"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 cursor-pointer hover:opacity-100"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 cursor-pointer hover:opacity-100"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white opacity-50 cursor-pointer hover:opacity-100"></div>
+        <!-- Bottom Right Decorative Shape -->
+        <div class="absolute bottom-0 right-0 w-[350px] h-[120px] bg-[#3e1b12] rounded-tl-[120px] z-20 hidden md:flex flex-col items-center justify-center shadow-2xl pl-10 pt-4">
+            <i class="ph-fill ph-flower-lotus text-3xl text-[#d1b17d] mb-1"></i>
+            <div class="text-[10px] font-bold tracking-[0.25em] text-[#d1b17d] uppercase text-center leading-tight">Tradition<br>In Every Bite</div>
         </div>
     </section>
 
@@ -221,7 +245,7 @@
                 <span class="w-6 h-[1px] bg-secondary relative"><span class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rotate-45 bg-secondary"></span></span>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 <!-- Card 1 -->
                 <a href="{{ url_for('bites') }}" class="bg-bgdarker rounded-[20px] pb-5 text-center cursor-pointer group hover:-translate-y-1 transition-transform shadow-card decoration-transparent block">
                     <div class="relative w-full h-48 rounded-t-[20px] overflow-hidden">
@@ -255,8 +279,8 @@
                     <h3 class="font-semibold text-textdark text-[15px]">Crunch</h3>
                 </a>
 
-                <!-- Card 4 (Placeholder since old app only had 3) -->
-                <a href="#" onclick="alert('Coming soon!'); return false;" class="bg-bgdarker rounded-[20px] pb-5 text-center cursor-pointer group hover:-translate-y-1 transition-transform shadow-card decoration-transparent block">
+                <!-- Card 4 -->
+                <a href="{{ url_for('baklava') }}" class="bg-bgdarker rounded-[20px] pb-5 text-center cursor-pointer group hover:-translate-y-1 transition-transform shadow-card decoration-transparent block">
                     <div class="relative w-full h-48 rounded-t-[20px] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/baklawa.png') }}" alt="Baklawa" class="w-full h-full object-cover">
                     </div>
@@ -266,7 +290,18 @@
                     <h3 class="font-semibold text-textdark text-[15px]">Baklawa</h3>
                 </a>
 
-                <!-- Card 5 -->
+                <!-- Card 5 (Fusion) -->
+                <a href="{{ url_for('fusion') }}" class="bg-bgdarker rounded-[20px] pb-5 text-center cursor-pointer group hover:-translate-y-1 transition-transform shadow-card decoration-transparent block">
+                    <div class="relative w-full h-48 rounded-t-[20px] overflow-hidden">
+                        <img src="{{ url_for('static', filename='images/fusion.png') }}" alt="Fusion" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full mx-auto -mt-5 relative z-10 flex items-center justify-center border border-gray-100 shadow-sm text-primary mb-3">
+                        <i class="ph ph-magic-wand text-lg"></i>
+                    </div>
+                    <h3 class="font-semibold text-textdark text-[15px]">Fusion</h3>
+                </a>
+
+                <!-- Card 6 -->
                 <a href="#" onclick="alert('Coming soon!'); return false;" class="bg-bgdarker rounded-[20px] pb-5 text-center cursor-pointer group hover:-translate-y-1 transition-transform shadow-card decoration-transparent block">
                     <div class="relative w-full h-48 rounded-t-[20px] overflow-hidden">
                         <img src="{{ url_for('static', filename='images/gift_box.png') }}" alt="Gift Boxes" class="w-full h-full object-cover">
@@ -357,7 +392,7 @@
                 
                 <!-- Product 1 -->
                 <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
+                    <div class="h-32 sm:h-48 bg-white overflow-hidden">
                         <img src="{{ url_for('static', filename='images/almond_bite_new.png') }}" alt="Almond Bite" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
@@ -381,7 +416,7 @@
 
                 <!-- Product 2 -->
                 <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
+                    <div class="h-32 sm:h-48 bg-white overflow-hidden">
                         <img src="{{ url_for('static', filename='images/rose_delight.jpg') }}" alt="Rose Delight" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
@@ -405,7 +440,7 @@
 
                 <!-- Product 3 -->
                 <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
+                    <div class="h-32 sm:h-48 bg-white overflow-hidden">
                         <img src="{{ url_for('static', filename='images/nutty_crunch.jpg') }}" alt="Nutty Crunch" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
@@ -429,7 +464,7 @@
 
                 <!-- Product 4 -->
                 <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
+                    <div class="h-32 sm:h-48 bg-white overflow-hidden">
                         <img src="{{ url_for('static', filename='images/dry_fruite_bite.png') }}" alt="Dry Fruit Bite" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
@@ -453,7 +488,7 @@
 
                 <!-- Product 5 -->
                 <div class="sm:min-w-[240px] w-full bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-card transition-shadow">
-                    <div class="h-32 sm:h-48 bg-[#f7f3ec] overflow-hidden">
+                    <div class="h-32 sm:h-48 bg-white overflow-hidden">
                         <img src="{{ url_for('static', filename='images/almond_delight.jpg') }}" alt="Almond Delight" class="w-full h-full object-cover">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
@@ -477,6 +512,44 @@
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-bgdarker pt-16 pb-8 border-t border-gray-200 mt-10">
+        <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="{{ url_for('static', filename='images/JBG_logo.png') }}" alt="JBG Logo" class="w-12 h-12 object-contain rounded-full shadow-sm border border-primary/20">
+                    <div class="flex flex-col">
+                        <span class="font-serif font-semibold text-primary text-lg leading-none tracking-wide">JAI BHAWANI</span>
+                        <span class="font-serif text-primary text-[9px] tracking-[0.3em] uppercase mt-1">GROUP</span>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-sm">Tradition &bull; Quality &bull; Trust</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-textdark mb-4 uppercase tracking-wider text-sm" id="contact">Contact Us</h4>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex items-center gap-2"><i class="ph-fill ph-envelope-simple text-primary text-lg"></i> <a href="mailto:jaibhawanisweet07@gmail.com" class="hover:text-primary transition-colors">jaibhawanisweet07@gmail.com</a></li>
+                    <li class="flex items-start gap-2"><i class="ph-fill ph-phone text-primary text-lg mt-0.5"></i> 
+                        <div class="flex flex-col">
+                            <a href="tel:9375587000" class="hover:text-primary transition-colors">+91 9375587000</a>
+                            <a href="tel:9909625739" class="hover:text-primary transition-colors">+91 9909625739</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-textdark mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                    <li><a href="{{ url_for('home') }}" class="hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="{{ url_for('home') }}#products" class="hover:text-primary transition-colors">Categories</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto px-6 mt-12 pt-6 border-t border-gray-200 text-center text-sm text-gray-400">
+            &copy; 2026 Jai Bhawani Group. All Rights Reserved.
+        </div>
+    </footer>
 
     <!-- Tailwind Toast Container -->
     <div id="toast-container" class="fixed bottom-4 right-4 z-[100] flex flex-col gap-2"></div>

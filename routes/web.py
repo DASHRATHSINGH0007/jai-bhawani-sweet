@@ -371,6 +371,20 @@ def register_web_routes(app):
             return redirect(url_for("login"))
         return render_template("products.html", products=products_for_category("delight"), category="Delight")
 
+    @app.route("/baklava")
+    def baklava():
+        if login_required():
+            flash("Please log in to view products.", "warning")
+            return redirect(url_for("login"))
+        return render_template("products.html", products=products_for_category("baklava"), category="Baklava")
+
+    @app.route("/fusion")
+    def fusion():
+        if login_required():
+            flash("Please log in to view products.", "warning")
+            return redirect(url_for("login"))
+        return render_template("products.html", products=products_for_category("fusion"), category="Fusion")
+
     @app.route("/order", methods=["POST"])
     def place_order():
 
@@ -382,7 +396,7 @@ def register_web_routes(app):
         except (TypeError, ValueError):
             quantity = 1
 
-        if product_name and category in ("bites", "crunch", "delight", "mix"):
+        if product_name and category in ("bites", "crunch", "delight", "mix", "baklava", "fusion"):
             if "cart" not in session:
                 session["cart"] = []
             

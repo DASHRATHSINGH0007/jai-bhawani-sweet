@@ -42,5 +42,26 @@ PRODUCTS = {
     ],
     "mix": [
         {"name": "Assorted Diwali Box", "image": "assorted_box.jpg", "desc": "A premium selection of our best sweets.", "price": "₹1200/box"},
+    ],
+    "baklava": [
+        {"name": "Bulbul Baklava", "image": "bulbul_baklava.png", "desc": "Premium bulbul baklava with rich taste.", "price": "₹1200/kg"},
+        {"name": "Osmali Baklava", "image": "osamali_baklava.png", "desc": "Authentic osmali baklava loaded with nuts.", "price": "₹1200/kg"},
+        {"name": "Cashew Pyramid Baklava", "image": "keshaw_piramind.png", "desc": "Delicious cashew pyramid baklava.", "price": "₹1200/kg"},
+        {"name": "Finger Baklava", "image": "finger_baklawa.png", "desc": "Crispy finger baklava with sweet filling.", "price": "₹1200/kg"},
+        {"name": "Mix Pyramid Baklava", "image": "mix_peramind.png", "desc": "Assorted mix pyramid baklava.", "price": "₹1200/kg"},
+        {"name": "Almond Tat Baklava", "image": "almond_tat_baklava.png", "desc": "Rich almond tat baklava.", "price": "₹1200/kg"},
+        {"name": "Chocolate Currency Baklava", "image": "chocolate_currency.png", "desc": "Unique chocolate currency baklava.", "price": "₹1200/kg"},
+        {"name": "Mix Dry Fruit Osama Baklava", "image": "mix_ossama.png", "desc": "Premium mix dry fruit osama baklava.", "price": "₹1200/kg"},
+    ],
+    "fusion": [
+        {"name": "Kaju Fusion", "image": "kaju_fusion.png", "desc": "Premium kaju fusion sweet.", "price": "₹1200/kg"},
+        {"name": "Almond Fusion", "image": "almond_fusion.png", "desc": "Rich almond fusion sweet.", "price": "₹1200/kg"},
+        {"name": "American Fusion", "image": "american_fusion.png", "desc": "Special american fusion delight.", "price": "₹1200/kg"},
+        {"name": "Dryfruit Dhamaka", "image": "dry_fruite_dmaka.png", "desc": "Explosive dryfruit dhamaka taste.", "price": "₹1200/kg"},
+        {"name": "Pineapple Fusion", "image": "pinaple_fusion.png", "desc": "Tropical pineapple fusion.", "price": "₹1200/kg"},
+        {"name": "Cranberry Fusion", "image": "cranberry_fusion.png", "desc": "Tart and sweet cranberry fusion.", "price": "₹1200/kg"},
+        {"name": "Rose Dhamaka", "image": "rose_dmaka.png", "desc": "Fragrant rose dhamaka sweet.", "price": "₹1200/kg"},
+        {"name": "Protein Dryfruits", "image": "protine_dry.png", "desc": "Healthy protein dryfruits mix.", "price": "₹1200/kg"},
+        {"name": "Mango Cream Fusion", "image": "mango_fusion.png", "desc": "Creamy mango cream fusion sweet.", "price": "₹1200/kg"},
     ]
 }

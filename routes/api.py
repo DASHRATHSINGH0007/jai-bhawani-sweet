@@ -105,7 +105,7 @@ def create_order():
     except (TypeError, ValueError):
         return jsonify({"ok": False, "error": "Quantity must be a number"}), 400
 
-    if not product_name or category not in ("bites", "crunch", "delight"):
+    if not product_name or category not in ("bites", "crunch", "delight", "mix", "baklava", "fusion"):
         return jsonify({"ok": False, "error": "Invalid order data"}), 400
     if quantity < 1:
         return jsonify({"ok": False, "error": "Quantity must be at least 1"}), 400

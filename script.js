@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price * item.quantity;
             return `
                 <div class="flex items-center gap-4 bg-white p-3 rounded-lg border shadow-sm">
-                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded bg-[#f7f3ec]">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded bg-white">
                     <div class="flex-grow">
                         <h4 class="font-semibold text-sm text-textdark">${item.name}</h4>
                         <div class="text-primary font-bold text-sm">₹${item.price}</div>
